@@ -57,14 +57,14 @@ class Products extends React.Component {
     let badge_category = [];
     let categories = get_category(this.state.products);
 
-    categories.forEach((v) => {
+    categories.forEach((v, i) => {
       switch (v) {
         case "Man":
         case "Men":
         case "Women":
           break;
         default:
-          badge_category.push(<BadgeCategory text={v} clickable={true} />);
+          badge_category.push(<BadgeCategory key={i} id={i} text={v} clickable={true} />);
       }
     });
 
