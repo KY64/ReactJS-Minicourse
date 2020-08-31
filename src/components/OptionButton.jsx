@@ -11,7 +11,7 @@ const Option = ({ content, state, changeState }) => (
         cursor: "pointer",
         borderRadius: "10px 0 0 10px",
       }}
-      onClick={() => changeState()}
+      onClick={() => state ? changeState() : void 0 }
     >
       {content[0]}
     </div>
@@ -24,7 +24,7 @@ const Option = ({ content, state, changeState }) => (
         cursor: "pointer",
         borderRadius: "0 10px 10px 0",
       }}
-      onClick={() => changeState()}
+      onClick={() => !state ? changeState() : void 0 }
     >
       {content[1]}
     </div>
