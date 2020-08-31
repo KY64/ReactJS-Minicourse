@@ -20,8 +20,11 @@ class Products extends React.Component {
       man: false,
       women: false,
       products: [],
-      category: []
+      category: [],
+      isSelected: false
     };
+
+    this.changeState = this.changeState.bind(this)
   }
 
   componentDidMount() {
@@ -32,6 +35,10 @@ class Products extends React.Component {
     axios(productURL)
       .then((res) => this.setState({ products: res.data }))
       .catch((err) => this.setState({ isConnected: false }));
+  }
+
+  changeState() {
+    this.setState({isSelected: !this.state.isSelected})
   }
 
   getCategory() {
@@ -83,7 +90,11 @@ class Products extends React.Component {
           />
 
           <div className="mt-4" id="gender">
-            <OptionButton content={[<FaMars />, <FaVenus />]} />
+            <OptionButton
+                  content={[<FaMars />, <FaVenus />]}
+                  state={this.state.isSelected}
+                  changeState={this.changeState}
+            />
           </div>
           <div id="category" className="mt-4">
             <h5 className="orange-d">Category</h5>
