@@ -30,10 +30,10 @@ const getStock = (size, product) => {
   }
 }
 
-const badge = (product, token, clickable) => {
+const badge = (product, token, clickable, iterate) => {
   if(product) {
     let arr = product.split(token)
-    return arr.map(v => <BadgeCategory text={v.trim()} clickable={clickable} />)
+    return arr.map((v,i) => <BadgeCategory id={i+iterate} text={v.trim()} clickable={clickable} />)
   }
 }
 
@@ -112,7 +112,7 @@ const Details = () => {
             {product ? product.description : ""}
           </p>
           <div>
-            {badge(product.category, ',', false)}
+            {badge(product.category, ',', false,10)}
           </div>
         </div>
         <div className="d-flex">
@@ -127,7 +127,7 @@ const Details = () => {
               IDR {product ? price_formatter(product.price) : ""}
             </h3>
             <div className="mb-3">
-              {badge(product.colour, ' ', true)}
+              {badge(product.colour, ' ', true,90)}
             </div>
             <Form>
               <FormGroup>

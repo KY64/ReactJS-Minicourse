@@ -23,6 +23,7 @@ class Products extends React.Component {
     };
 
     this.changeState = this.changeState.bind(this);
+    this.selectCategory = this.selectCategory.bind(this);
   }
 
   componentDidMount() {
@@ -39,10 +40,10 @@ class Products extends React.Component {
     this.setState({ isWomen: !this.state.isWomen });
   }
 
-  getCategory() {
-    this.state.products.forEach((v) => {
-      let arr = v.category;
-    });
+  selectCategory(badge_category, selected) {
+    selected
+    ? this.setState({category: this.state.category.concat(badge_category)})
+    : void 0
   }
 
   listProducts() {
@@ -75,7 +76,7 @@ class Products extends React.Component {
           break;
         default:
           badge_category.push(
-            <BadgeCategory key={i} id={i} text={v} clickable={true} />
+            <BadgeCategory key={i} id={i} text={v} clickable={true} changeState={this.selectCategory} />
           );
       }
     });
