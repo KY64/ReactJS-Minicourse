@@ -14,14 +14,14 @@ const EmptyData = () => (
       </h3>
       <h3>
         Create file{" "}
-        <a href="#" target="_blank">
+        <a href="https://github.com/KY64/ReactJS-Minicourse/tree/master/database" target="_blank">
           db.json
         </a>{" "}
         inside folder <b>database</b>
       </h3>
       <h3>
         Copy the JSON content from{" "}
-        <a href="#" target="_blank">
+        <a href="https://raw.githubusercontent.com/KY64/ReactJS-Minicourse/master/database/db.json" target="_blank">
           here
         </a>
       </h3>
