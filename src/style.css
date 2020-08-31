@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+button:focus {
+  outline: none;
+  border: none;
+}
+
+.bg-prime {
+  background: #ff5722 !important;
+}
+
+.bg-prime-h {
+  background: #ff5722 !important;
+}
+
+.bg-prime-h:hover {
+  background: #ff8a50 !important
+}
+
+.bg-darker {
+  background: #c41c00
+}
+
+.bg-lighter {
+  background: #ff8a50 
+}
+
+.orange {
+  color: #ff5722
+}
+
+.orange-h {
+  color: #ff5722
+}
+
+.orange-h:hover {
+  color: #c41c00
+}
+
+.orange-d {
+  color: #c41c00
+}
+
+.orange-l {
+  color: #ff8a50
+}
