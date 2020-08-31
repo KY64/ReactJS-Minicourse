@@ -1,8 +1,11 @@
+<div align="center">
 # ReactJS with Axios
 
-[image]
+![Preview image](./preview.png)
 
 This is an example of CRUD react website I build after joining a free course. I use Axios to fetch data and Bootstrap for CSS framework.
+
+</div>
 
 ### Requirements
 
