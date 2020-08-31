@@ -17,14 +17,12 @@ class Products extends React.Component {
     super(props);
     this.state = {
       isConnected: true,
-      man: false,
-      women: false,
       products: [],
       category: [],
-      isSelected: false
+      isWomen: false,
     };
 
-    this.changeState = this.changeState.bind(this)
+    this.changeState = this.changeState.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +36,7 @@ class Products extends React.Component {
   }
 
   changeState() {
-    this.setState({isSelected: !this.state.isSelected})
+    this.setState({ isWomen: !this.state.isWomen });
   }
 
   getCategory() {
@@ -48,16 +46,21 @@ class Products extends React.Component {
   }
 
   listProducts() {
-    return this.state.products.map((v) => (
-      <Link to={`/product/${v.id}`}>
-        <Card
-          img={v.images[0]}
-          name={v.name}
-          price={price_formatter(v.price)}
-          brand={v.brand}
-        />
-      </Link>
-    ));
+    return this.state.products.map((v) => {
+      const gender = this.state.isWomen ? ["Woman", "Women"] : ["Man", "Men"];
+      const product_gen = v.category.split(',')[0].trim()
+      if (product_gen == gender[0] || product_gen == gender[1])
+        return (
+          <Link to={`/product/${v.id}`}>
+            <Card
+              img={v.images[0]}
+              name={v.name}
+              price={price_formatter(v.price)}
+              brand={v.brand}
+            />
+          </Link>
+        );
+    });
   }
 
   render() {
@@ -71,7 +74,9 @@ class Products extends React.Component {
         case "Women":
           break;
         default:
-          badge_category.push(<BadgeCategory key={i} id={i} text={v} clickable={true} />);
+          badge_category.push(
+            <BadgeCategory key={i} id={i} text={v} clickable={true} />
+          );
       }
     });
 
@@ -91,16 +96,14 @@ class Products extends React.Component {
 
           <div className="mt-4" id="gender">
             <OptionButton
-                  content={[<FaMars />, <FaVenus />]}
-                  state={this.state.isSelected}
-                  changeState={this.changeState}
+              content={[<FaMars />, <FaVenus />]}
+              state={this.state.isWomen}
+              changeState={this.changeState}
             />
           </div>
           <div id="category" className="mt-4">
             <h5 className="orange-d">Category</h5>
-            <div className="mt-3">
-              {badge_category}
-            </div>
+            <div className="mt-3">{badge_category}</div>
           </div>
           <div
             className="position-absolute orange"
